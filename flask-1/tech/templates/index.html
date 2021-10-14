@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google News</title>
+    <link rel="stylesheet" href="/tech/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <style>
+        *
+        {
+            font-family: 'Poppins', sans-serif;
+        }
+        html{
+            background-color:#2d2d2d;
+        }
+        h1{
+            color: white;
+            text-align: center;
+            padding-top: 50px;
+        }
+        form{
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        a{
+            text-decoration: none;
+        }
+        input{
+                font-size: 17px;
+                border: 1px solid white;
+                color: #878683;
+                padding: 8px;
+                border-radius: 15px 0px 0px 15px;
+        }
+        button{
+            background-color: #9e3bc3;
+            font-size: 17px;
+            padding: 8px;
+            border: 1px solid #9e3bc3;
+            color: white;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 0px 15px 15px 0px;
+            margin-left: -6px;
+        }
+        .grid-container{
+            box-shadow: #878683;
+            padding: 50px;
+            text-align: center;
+            border-radius: 5px;
+            background-color: white;
+            margin-left: 25%;
+            margin-right: 25%;
+
+        }
+        img{
+            padding-top: 15px;
+            width:85%;
+            height:75%;
+            border-radius: 15px;
+        }
+        p{
+            padding-bottom: 15px;
+        }
+   
+        /* On screens that are 992px or less, set the background color to blue */
+        @media screen and (max-width: 992px) {
+       
+        }
+
+        /* On screens that are 600px or less, set the background color to olive */
+        @media screen and (max-width: 600px) {
+        .grid-container {
+            margin-left: 0%;
+            margin-right: 0%;
+            
+        }
+        input,button{
+            border-radius: 15px;
+        }
+        }
+        
+    </style>
+    
+</head>
+<body>
+    <h1>World At Your FingerTips</h1>
+       <!--- creating a form --->
+
+    <form action='/results/' method="POST">
+        <input type="text" placeholder="Search a keyword" name="keyword">
+        <button type="submit">Get News</button>
+
+
+    </form>
+    <!---  to iterate the for loop  --->
+    <div class="grid-container">
+        {% for post in news %}
+        <img src="{{post['urlToImage']}}" />
+        <a href="{{post['url']}}">
+            <h2 style="color: green;">{{post['title']}}</h2>
+
+        </a>
+                <i>{{post['publishedAt']}}</i>
+         <p>{{post['description']}}</p>
+         <hr>
+        {% endfor %}
+        
+    </div>
+    
+
+</body> 
+</html>
