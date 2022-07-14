@@ -1,1 +1,2 @@
 # Google_News
+<hr>
